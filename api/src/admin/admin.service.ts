@@ -30,9 +30,8 @@ export class AdminService {
     return await this.adminModel.findByIdAndUpdate(id, updateAdminDto);
   }
 
-  async updatePassword(id: string, password: string): Promise<Admin> {
-    password = await hash(password, 10);
-    return await this.adminModel.findByIdAndUpdate(id, { password });
+  async updatePassword(id: string, myPassword: string): Promise<Admin> {
+    return await this.adminModel.findByIdAndUpdate(id, { password: await hash(myPassword, 10) });
   }
 
   async delete(id: string): Promise<boolean> {

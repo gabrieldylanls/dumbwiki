@@ -32,8 +32,8 @@ export class AdminController {
   }
 
   @Put('/updatePassword/:id')
-  async updatePassword(@Param() params: { id: string }, @Body() password: string): Promise<Admin> {
-    return await this.adminService.updatePassword(params.id, password);
+  async updatePassword(@Param() params: { id: string }, @Body() body: { password: string } ): Promise<Admin> {
+    return await this.adminService.updatePassword(params.id, body.password);
   }
 
   @Delete(':id')
