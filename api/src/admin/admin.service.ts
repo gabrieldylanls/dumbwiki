@@ -1,15 +1,16 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { hash } from 'bcryptjs';
 
 import { Admin } from './interfaces/admin.interface';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
+import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class AdminService {
   constructor(
-    @Inject('Admin') private readonly adminModel: Model<Admin>
+    @InjectModel('Admin') private readonly adminModel: Model<Admin>
   ) { }
 
   async findAll(): Promise<Admin[]> {
