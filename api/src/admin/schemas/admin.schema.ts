@@ -11,11 +11,13 @@ export const AdminSchema = new mongoose.Schema({
     type: String,
     minlength: 2,
     maxlength: 10,
-    required: true
+    required: true,
+    unique: true
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
