@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 
 import { AdminService } from './admin.service';
 import { Admin } from './interfaces/admin.interface';
@@ -37,6 +37,7 @@ export class AdminController {
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param() params: { id: string }): Promise<boolean> {
     return await this.adminService.delete(params.id);
   }
