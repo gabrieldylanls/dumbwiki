@@ -21,6 +21,10 @@ export class AdminService {
     return await this.adminModel.findById(id);
   }
 
+  async findByEmail(email: string): Promise<Admin> {
+    return await this.adminModel.findOne({ email });
+  }
+
   async create(createAdminDto: CreateAdminDto): Promise<Admin> {
     const password = await hash(createAdminDto.password, 10);
     return await this.adminModel.create({ ...createAdminDto, password });
